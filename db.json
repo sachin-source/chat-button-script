@@ -1,0 +1,92 @@
+{
+  "clients": [
+    {
+      "id": "1",
+      "config": {
+        "_id": "66e04795c2cc605919f62d44",
+        "buttonConfiguration": {
+          "buttonStyle": "Rectangle",
+          "animation": {
+            "enabled": true,
+            "animation": "HeartBeat"
+          },
+          "border": false,
+          "notification": true,
+          "backgroundStyle": "Solid",
+          "buttonSize": 12,
+          "borderRadius": 10,
+          "shadow": 12,
+          "opacity": 10,
+          "position": "Left",
+          "display": "Desktop",
+          "whereShow": {
+            "allPages": true,
+            "pages": null
+          }
+        },
+        "chatConfiguration": {
+          "greetingMessage": {
+            "enabled": true,
+            "message": "SAAS-2",
+            "showMessengers": true
+          },
+          "greetingType": "Classic",
+          "position": "Left",
+          "mirror": true,
+          "avatarIcon": "URL",
+          "agentName": "Ajay",
+          "agentPosition": "Manager",
+          "displayFrequency": "Every",
+          "delaySec": 10,
+          "callToAction": "lllkl"
+        },
+        "agents": [
+          {
+            "type": "WhatsApp",
+            "_id": "66e04795c2cc605919f62d43",
+            "buttonColour": null,
+            "customColour": "#09099",
+            "onHoverText": null,
+            "buttonImage": null,
+            "formTitle": null,
+            "popupSubTitle": null,
+            "agentType": "WhatsApp",
+            "children": [
+              {
+                "_id": "66e04795c2cc605919f62d41",
+                "number": "999999999",
+                "agentName": "Ajay",
+                "agentPosition": null,
+                "agentImage": null,
+                "preFilledMessage": null
+              },
+              {
+                "_id": "66e04795c2cc605919f62d42",
+                "number": "9090909090",
+                "agentName": "Vijay",
+                "agentPosition": "Agent",
+                "agentImage": null,
+                "preFilledMessage": null
+              },
+              {
+                "number": "9897980987",
+                "agentName": "Ajay",
+                "agentPosition": "Manager",
+                "agentImage": "JKJKK",
+                "preFilledMessage": null
+              }
+            ]
+          }
+        ],
+        "enabled": true,
+        "status": "Draft"
+      },
+      "enabled": true
+    },
+    {
+      "id": "12345",
+      "config": {},
+      "enabled": false
+    }
+  ]
+}
