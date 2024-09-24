@@ -15,7 +15,7 @@
  */
 const API = 'http://localhost:3000/clients'
 
-(async () => {
+const authenticate = async () => {
     try {
         const host = window.location.host || "" ;
         const id = Number(host == "localhost:3000")
@@ -35,9 +35,12 @@ const API = 'http://localhost:3000/clients'
     } catch (error) {
         console.error("error loading genie widget")
     }
-})()
+};
+
+// authenticate()
 
 var importFile = (filename, type="JS") => {
+    console.log("import file")
     const head = document.getElementsByTagName('head')[0];
 
     if(type === "JS"){
@@ -67,3 +70,5 @@ const initiateWidget = () => {
     importFile('/widget.js', 'JS')
     
 }
+
+initiateWidget()
