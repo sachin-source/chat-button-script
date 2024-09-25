@@ -5,15 +5,15 @@ document.head.appendChild(script);
 const widget = document.createElement('div');
 
 const settings = JSON.parse(localStorage.getItem('genieweb-settings') || "{}");
-
-const { buttonConfiguration: { buttonStyle = '', animation: { enabled = false, animation = '' } = {}, } = {}, agents = [] } = settings;
+console.log(settings)
+const { buttonConfiguration: { buttonStyle = '', animation: { enabled = false, animation = '', notification=false } = {}, border=false } = {}, agents = [] } = settings;
 
 const buttonSpace = `
   <div class="w-[300px] flex mt-6 justify-end animate-bounce" >
-    <span class="h-16 w-16 p-2 bg-gray-700 ${buttonStyle == "Rectangle" ? 'rounded-md' : 'rounded-full'} flex justify-center items-center" >
+    <span class="h-16 w-16 ${border ? 'border-4 border-white' : 'border-none'} p-2 bg-gray-700 ${buttonStyle == "Rectangle" ? 'rounded-md' : 'rounded-full'} flex justify-center items-center" >
       <span class="bg-white h-full w-full ${buttonStyle == "Rectangle" ? 'rounded-md' : 'rounded-full'} flex" ></span>
     </span>
-    <span class="h-4 w-4 p-0.5 text-white text-[12px] flex justify-center items-center bg-red-600 rounded-full relative right-2 top-2" >1</span>
+    ${notification ? '<span class="h-4 w-4 p-0.5 text-white text-[12px] flex justify-center items-center bg-red-600 rounded-full relative right-2 top-2" >1</span>' : ''}
   </div>
 `
 
@@ -45,18 +45,18 @@ const widgetBody = `
   <div class="flex flex-col text-center pt-4 text-xs font-bold">
     <span>Start Chat With:</span>
     <div class="flex">
-      <div class="bg-green-500 text-white w-full p-2 rounded-md my-4 cursor-pointer" onclick="genieButtonOpenWhatsapp()" >WhatsApp</div>
+      <div class="bg-green-500 text-white w-full p-2 mx-2 text-lg rounded-md my-4 cursor-pointer" onclick="genieButtonOpenWhatsapp()" >WhatsApp</div>
     </div>
   </div>
 `
 
 const widgetContainer = `
   <div class="flex flex-col items-end gap-4 fixed bottom-4 right-4">
-    <div class="rounded-2xl h-fit w-[300px] bg-white" id="genie-widget">
+    <div class="rounded-2xl h-fit w-[300px] bg-white border-gray-600 border-[1px]" id="genie-widget">
       <div class="h-[70px] w-full rounded-t-2xl bg-gray-700 flex justify-between items-center p-4" id="genie-widget-header" ></div>
       <div class="flex flex-col p-1" id="genie-widget-body" ></div>
+      </div>
       <div id="genie-botton-container"></div>
-    </div>
   </div>
 `
 
@@ -78,12 +78,12 @@ const agentsUI = whatsappAgents.children.map((a) => {
 
 
   const htmlElement = `
-    <a href="https://wa.me/${number}?text=${preFilledMessage}" class="flex items-center justify-between p-2 mx-2 rounded-md border-[1px] border-gray-400" >
-      <div class="flex items-center" >
+    <a target="_blank" href="https://wa.me/${number}?text=${preFilledMessage}" class="flex items-center justify-between p-2 mx-2 rounded-md border-[1px] border-gray-400" >
+      <div class="flex items-center gap-3" >
         <img class="h-10 w-10 rounded-3xl" src=${agentIcon} height={200} width={200} />
         <div class="flex flex-col">
           <span class="text-sm font-bold text-gray-800" >${agentName}</span>
-          <span class="text-sm text-gray-400" >${agentPosition}</span>
+          <span class="text-xs text-gray-400" >${agentPosition}</span>
         </div>
       </div>
       <div>
