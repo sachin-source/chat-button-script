@@ -66,7 +66,6 @@ const renderWidget = () => {
   document.getElementById('genie-botton-container').innerHTML = buttonSpace;
   document.getElementById("genie-widget-header").innerHTML = widgetHeader;
   document.getElementById("genie-widget-body").innerHTML = widgetBody;
-
 }
 
 const genieButtonOpenWhatsapp = () => {
