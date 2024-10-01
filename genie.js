@@ -66,8 +66,10 @@ const initiateWidget = () => {
      * Draw widget, append the apps
      * Render the app
      */
-    importFile('https://assets.geniebutton.com/genie-widget.css', 'CSS')
-    importFile('https://assets.geniebutton.com/genie-widget.js', 'JS')
+    importFile('./genie-widget.css', 'CSS')
+    importFile('./genie-widget.js', 'JS')
+    // importFile('https://assets.geniebutton.com/genie-widget.css', 'CSS')
+    // importFile('https://assets.geniebutton.com/genie-widget.js', 'JS')
     
 }
 
