@@ -8,8 +8,13 @@ const settings = JSON.parse(localStorage.getItem('genieweb-settings') || "{}");
 console.log(settings)
 const { buttonConfiguration: { buttonStyle = '', animation: { enabled = false, animation = '', notification=false } = {}, border=false } = {}, agents = [] } = settings;
 
+const toggleWidget = () => {
+  const currentState = document.getElementById('genie-widget').hidden;
+  document.getElementById('genie-widget').hidden = !currentState;
+}
+
 const buttonSpace = `
-  <div class="w-[300px] flex mt-6 justify-end animate-bounce" >
+  <div class="w-[300px] flex mt-6 justify-end animate-bounce" onclick="toggleWidget()" >
     <span class="h-16 w-16 ${border ? 'border-4 border-white' : 'border-none'} p-2 bg-gray-700 ${buttonStyle == "Rectangle" ? 'rounded-md' : 'rounded-full'} flex justify-center items-center" >
       <span class="bg-white h-full w-full ${buttonStyle == "Rectangle" ? 'rounded-md' : 'rounded-full'} flex" ></span>
     </span>
@@ -55,8 +60,8 @@ const widgetContainer = `
     <div class="rounded-2xl h-fit w-[300px] bg-white border-gray-600 border-[1px]" id="genie-widget">
       <div class="h-[70px] w-full rounded-t-2xl bg-gray-700 flex justify-between items-center p-4" id="genie-widget-header" ></div>
       <div class="flex flex-col p-1" id="genie-widget-body" ></div>
-      </div>
-      <div id="genie-botton-container"></div>
+    </div>
+    <div id="genie-botton-container"></div>
   </div>
 `
 
@@ -64,6 +69,7 @@ const renderWidget = () => {
   widget.innerHTML = widgetContainer;
   document.body.append(widget);
   document.getElementById('genie-botton-container').innerHTML = buttonSpace;
+  document.getElementById('genie-widget').hidden = true
   document.getElementById("genie-widget-header").innerHTML = widgetHeader;
   document.getElementById("genie-widget-body").innerHTML = widgetBody;
 }
