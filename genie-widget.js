@@ -5,8 +5,87 @@ document.head.appendChild(script);
 const widget = document.createElement('div');
 
 const settings = JSON.parse(localStorage.getItem('genieweb-settings') || "{}");
-console.log(settings)
-const { buttonConfiguration: { buttonStyle = '', animation: { enabled = false, animation = '', notification=false } = {}, border=false } = {}, agents = [] } = settings;
+const settings1 = {
+  "_id": "66e04795c2cc605919f62d44",
+  "buttonConfiguration": {
+      "buttonStyle": "Rectangle",
+      "animation": {
+          "enabled": true,
+          "animation": "HeartBeat"
+      },
+      "border": true,
+      "notification": true,
+      "backgroundStyle": "Solid",
+      "buttonSize": 12,
+      "borderRadius": 10,
+      "shadow": 12,
+      "opacity": 10,
+      "position": "Left",
+      "display": "Desktop",
+      "whereShow": {
+          "allPages": true,
+          "pages": null
+      }
+  },
+  "chatConfiguration": {
+      "greetingMessage": {
+          "enabled": true,
+          "message": "SAAS-2",
+          "showMessengers": true
+      },
+      "greetingType": "Classic",
+      "position": "Left",
+      "mirror": true,
+      "avatarIcon": "URL",
+      "agentName": "Ajay",
+      "agentPosition": "Manager",
+      "displayFrequency": "Every",
+      "delaySec": 10,
+      "callToAction": "lllkl"
+  },
+  "agents": [
+      {
+          "type": "WhatsApp",
+          "_id": "66e04795c2cc605919f62d43",
+          "buttonColour": null,
+          "customColour": "#09099",
+          "onHoverText": null,
+          "buttonImage": null,
+          "formTitle": null,
+          "popupSubTitle": null,
+          "agentType": "WhatsApp",
+          "children": [
+              {
+                  "_id": "66e04795c2cc605919f62d41",
+                  "number": "999999999",
+                  "agentName": "Ajay",
+                  "agentPosition": null,
+                  "agentImage": null,
+                  "preFilledMessage": null
+              },
+              {
+                  "_id": "66e04795c2cc605919f62d42",
+                  "number": "9090909090",
+                  "agentName": "Vijay",
+                  "agentPosition": "Agent",
+                  "agentImage": null,
+                  "preFilledMessage": null
+              },
+              {
+                  "number": "9897980987",
+                  "agentName": "Ajay",
+                  "agentPosition": "Manager",
+                  "agentImage": "JKJKK",
+                  "preFilledMessage": null
+              }
+          ]
+      }
+  ],
+  "enabled": true,
+  "status": "Draft"
+}
+const {
+  buttonConfiguration: { buttonStyle = '', animation: { enabled = false, animation = '', notification=false } = {}, border=false } = {}, agents = [] } = settings1;
 
 const toggleWidget = () => {
   const currentState = document.getElementById('genie-widget').hidden;
@@ -14,7 +93,7 @@ const toggleWidget = () => {
 }
 
 const buttonSpace = `
-  <div class="w-[300px] flex mt-6 justify-end animate-bounce" onclick="toggleWidget()" >
+  <div class="w-[300px] flex mt-6 justify-end ${'animate-' + animation.toLowerCase()}" onclick="toggleWidget()" >
     <span class="h-16 w-16 ${border ? 'border-4 border-white' : 'border-none'} p-2 bg-gray-700 ${buttonStyle == "Rectangle" ? 'rounded-md' : 'rounded-full'} flex justify-center items-center" >
       <span class="bg-white h-full w-full ${buttonStyle == "Rectangle" ? 'rounded-md' : 'rounded-full'} flex" ></span>
     </span>
@@ -50,7 +129,7 @@ const widgetBody = `
   <div class="flex flex-col text-center pt-4 text-xs font-bold">
     <span>Start Chat With:</span>
     <div class="flex">
-      <div class="bg-green-500 text-white w-full p-2 mx-2 text-lg rounded-md my-4 cursor-pointer" onclick="genieButtonOpenWhatsapp()" >WhatsApp</div>
+      <div class="bg-green-500 text-white w-full py-2 px-4 mx-2 text-lg rounded-md my-4 cursor-pointer" onclick="genieButtonOpenWhatsapp()" >WhatsApp</div>
     </div>
   </div>
 `
